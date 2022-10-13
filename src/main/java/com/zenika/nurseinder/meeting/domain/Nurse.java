@@ -4,7 +4,12 @@ import com.zenika.nurseinder.meeting.domain.shared_kernel.CalendarId;
 import com.zenika.nurseinder.shared_kernel.Entity;
 
 import java.util.List;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Nurse extends Entity {
 
     private String name;
