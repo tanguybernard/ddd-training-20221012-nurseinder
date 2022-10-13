@@ -1,4 +1,4 @@
-package com.zenika.nurseinder.meeting.api.nurse;
+package com.zenika.nurseinder.meeting.presentation;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +12,11 @@ import com.zenika.nurseinder.meeting.application.dto.CreateNurseDTO;
 
 @RestController
 @RequestMapping("/nurses")
-public class CreateNurseRessource {
+public class NurseController {
 
     private final CreateNurse createNurse;
 
-    public CreateNurseRessource(CreateNurse createNurse) {
+    public NurseController(CreateNurse createNurse) {
         this.createNurse = createNurse;
     }
 

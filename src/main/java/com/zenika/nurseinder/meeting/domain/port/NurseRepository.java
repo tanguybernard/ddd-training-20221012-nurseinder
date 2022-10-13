@@ -1,15 +1,15 @@
 package com.zenika.nurseinder.meeting.domain.port;
 
-import java.util.List;
-
+import com.zenika.nurseinder.meeting.domain.nurse_aggregate.NurseId;
 import org.springframework.stereotype.Service;
 
-import com.zenika.nurseinder.meeting.domain.Nurse;
+import com.zenika.nurseinder.meeting.domain.nurse_aggregate.Nurse;
 
 @Service
 public interface NurseRepository {
 
-    Nurse save(Nurse nurse);
+    void save(Nurse nurse);
 
-    List<Nurse> findAll();
+    Nurse find(NurseId nurseId) throws Exception;
+
 }

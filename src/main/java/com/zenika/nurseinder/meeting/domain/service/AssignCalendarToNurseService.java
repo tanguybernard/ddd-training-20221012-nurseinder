@@ -1,10 +1,10 @@
 package com.zenika.nurseinder.meeting.domain.service;
 
-import com.zenika.nurseinder.meeting.domain.Calendar;
-import com.zenika.nurseinder.meeting.domain.Nurse;
-import com.zenika.nurseinder.meeting.domain.Period;
-import com.zenika.nurseinder.meeting.domain.exception.CalendarException;
-import com.zenika.nurseinder.meeting.domain.shared_kernel.CalendarId;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Calendar;
+import com.zenika.nurseinder.meeting.domain.nurse_aggregate.Nurse;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Period;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.exception.CalendarException;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
 import java.util.Date;
 import java.util.List;
 import org.springframework.stereotype.Service;

@@ -1,16 +1,9 @@
 package com.zenika.nurseinder.meeting.infrastructure;
 
-import java.util.Date;
-import java.util.Optional;
-
-import org.springframework.data.repository.CrudRepository;
+import com.zenika.nurseinder.meeting.infrastructure.models.CalendarEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.zenika.nurseinder.meeting.domain.Calendar;
-
 @Repository
-public interface CalendarDAO extends CrudRepository<Calendar, String> {
-
-    Optional<Calendar> findByBeginDate(Date beginDate);
-
+public interface CalendarDAO extends JpaRepository<CalendarEntity, String> {
 }

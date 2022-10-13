@@ -5,9 +5,9 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.zenika.nurseinder.meeting.application.dto.CreateNurseDTO;
-import com.zenika.nurseinder.meeting.domain.Nurse;
-import com.zenika.nurseinder.meeting.domain.NurseId;
-import com.zenika.nurseinder.meeting.domain.OrdinalId;
+import com.zenika.nurseinder.meeting.domain.nurse_aggregate.Nurse;
+import com.zenika.nurseinder.meeting.domain.nurse_aggregate.NurseId;
+import com.zenika.nurseinder.meeting.domain.nurse_aggregate.OrdinalId;
 
 @Service
 public class NurseMapper {

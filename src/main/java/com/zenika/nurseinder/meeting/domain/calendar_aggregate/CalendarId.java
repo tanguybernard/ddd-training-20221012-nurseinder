@@ -1,11 +1,11 @@
-package com.zenika.nurseinder.meeting.domain.shared_kernel;
+package com.zenika.nurseinder.meeting.domain.calendar_aggregate;
 
 import lombok.Data;
 
 @Data
 public class CalendarId {
 
-    private final String id;
+    public final String id;
 
     public CalendarId(String s) {
         this.id = s;

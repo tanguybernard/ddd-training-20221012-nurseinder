@@ -1,4 +1,4 @@
-package com.zenika.nurseinder.meeting.domain.enumeration;
+package com.zenika.nurseinder.meeting.domain.calendar_aggregate;
 
 public enum Status {
     AVAILABLE,

@@ -1,37 +1,26 @@
-package com.zenika.nurseinder.meeting.domain;
+package com.zenika.nurseinder.meeting.domain.nurse_aggregate;
 
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import com.zenika.nurseinder.meeting.domain.shared_kernel.CalendarId;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
+import com.zenika.nurseinder.meeting.domain.events.NurseCreatedEvent;
+import com.zenika.nurseinder.shared_kernel.AggregateRoot;
 import com.zenika.nurseinder.shared_kernel.Entity;
 
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
-@javax.persistence.Entity
-@Table
-@Getter
-@Setter
-public class Nurse extends Entity<String> {
 
+public class Nurse extends AggregateRoot<NurseId> {
+
+    private NurseId id;
     private String name;
     private OrdinalId ordinalId;
     private String email;
 
-    @Embedded
-    @AttributeOverrides({ @AttributeOverride(name = "medicalOffice", column = @Column(name = "address")) })
     private MedicalOffice address;
 
     private int km;
-    @Transient
     private List<String> courses;
 
     private int sales;
@@ -59,11 +48,6 @@ public class Nurse extends Entity<String> {
         this.sales = sales;
         this.calendar = calendar;
     }
-
-    public NurseId getId() {
-        return (NurseId) id;
-    }
-
     public static Nurse create(
             NurseId id,
             String name,
@@ -75,5 +59,12 @@ public class Nurse extends Entity<String> {
             int sales,
             CalendarId calendar) {
         return new Nurse(id, name, ordinalId, email, address, km, courses, sales, calendar);
+    }
+
+    public void setCalendar(CalendarId calendarId) {
+
+        this.calendar = calendarId;
+        //this.record(new NurseCreatedEvent(this.id.value(), new Date()));
+
     }
 }

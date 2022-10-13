@@ -1,4 +1,4 @@
-package com.zenika.nurseinder.meeting.domain;
+package com.zenika.nurseinder.meeting.domain.calendar_aggregate;
 
 import java.util.Date;
 

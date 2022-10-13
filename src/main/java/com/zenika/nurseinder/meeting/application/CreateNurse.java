@@ -4,17 +4,14 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.UUID;
 
-import org.springframework.stereotype.Service;
-
 import com.zenika.nurseinder.meeting.application.dto.CreateNurseDTO;
 import com.zenika.nurseinder.meeting.application.mapper.NurseMapper;
-import com.zenika.nurseinder.meeting.domain.Calendar;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Calendar;
 import com.zenika.nurseinder.meeting.domain.port.CalendarRepository;
 import com.zenika.nurseinder.meeting.domain.port.NurseRepository;
 import com.zenika.nurseinder.meeting.domain.service.AssignCalendarToNurseService;
-import com.zenika.nurseinder.meeting.domain.shared_kernel.CalendarId;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
 
-@Service
 public class CreateNurse {
 
     private final NurseMapper nurseMapper;
@@ -37,6 +34,7 @@ public class CreateNurse {
     }
 
     public void create(CreateNurseDTO createNurseDto) {
+        System.out.println("Creation USE CASE");
         var cld = java.util.Calendar.getInstance();
         Date beginDate = new Date();
         cld.add(java.util.Calendar.DAY_OF_MONTH, 2);
@@ -53,9 +51,10 @@ public class CreateNurse {
 
     public void create(CreateNurseDTO createNurseDto, Calendar calendar) {
         var nurse = nurseMapper.from(createNurseDto);
-        assignCalendarToNurseService.assign(calendar, nurse);
+        assignCalendarToNurseService.assign(calendar, nurse);//nurse completely created with setCalendar => raise domain event(see inside Nurse)
 
         calendarRepository.save(calendar);
         nurseRepository.save(nurse);
+
     }
 }

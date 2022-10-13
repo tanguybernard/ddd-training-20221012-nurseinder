@@ -2,11 +2,11 @@ package com.zenika.nurseinder.meeting;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.zenika.nurseinder.meeting.domain.Calendar;
-import com.zenika.nurseinder.meeting.domain.Day;
-import com.zenika.nurseinder.meeting.domain.Period;
-import com.zenika.nurseinder.meeting.domain.enumeration.Status;
-import com.zenika.nurseinder.meeting.domain.shared_kernel.CalendarId;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Calendar;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Day;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Period;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Status;
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
 import java.util.Date;
 import java.util.List;
 import org.junit.jupiter.api.Test;
