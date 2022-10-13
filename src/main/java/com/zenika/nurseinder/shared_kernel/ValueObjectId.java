@@ -4,11 +4,10 @@ public class ValueObjectId<T> {
 
     private T id;
 
-    protected ValueObjectId(T id){
+    protected ValueObjectId(T id) {
 
         this.id = id;
     }
-
 
     @Override
     public boolean equals(Object obj) {

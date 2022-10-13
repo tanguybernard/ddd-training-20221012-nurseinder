@@ -25,6 +25,9 @@ public class AssignCalendarToNurseService {
     if (calendar == null || calendar.getId() == null) {
       throw new CalendarException();
     }
+    if (!calendar.checkCalendar()) {
+      throw new CalendarException();
+    }
     CalendarId calendarId = calendar.getId();
     nurse.setCalendar(calendarId);
   }
