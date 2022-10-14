@@ -10,11 +10,11 @@ import com.zenika.nurseinder.meeting.domain.port.NurseRepository;
 
 public class NurseRepositoryStub implements NurseRepository {
 
-    private final Map<NurseId, Nurse> database = new HashMap<>();
+    private final Map<String, Nurse> database = new HashMap<>();
 
     @Override
     public void save(Nurse nurse) {
-        database.put(nurse.getId(), nurse);
+        database.put(nurse.getId().value(), nurse);
     }
 
     @Override

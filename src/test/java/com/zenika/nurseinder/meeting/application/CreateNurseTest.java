@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.Date;
 import java.util.List;
 
+import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
+import com.zenika.nurseinder.meeting.domain.nurse_aggregate.Nurse;
 import org.junit.jupiter.api.Test;
 
 import com.zenika.nurseinder.meeting.application.dto.CreateNurseDTO;
@@ -32,16 +34,17 @@ public class CreateNurseTest {
             assignCalendarToNurseService);
 
     @Test
-    public void create_ShouldAssignCalendarToNurse() {
-        createNurse.create(new CreateNurseDTO("toto", "ordinalId", "toto@mail.com", null, 0, List.of("mon super cours"), 0));
+    public void create_ShouldAssignCalendarToNurse() throws Exception {
+        Nurse nurseCreated = createNurse.create(new CreateNurseDTO("toto", "ordinalId", "toto@mail.com", null, 0, List.of("mon super cours"), 0));
 
-        /*List<Nurse> nurses = nurseRepository.findAll();
+        System.out.println(nurseCreated);
+        Nurse nurse = nurseRepository.find(nurseCreated.getId());
 
-        assertThat(nurses).hasSize(1);
+        assertThat(nurse).isNotNull();
 
-        CalendarId calendarId = nurses.get(0).getCalendar();
+        CalendarId calendarId = nurse.getCalendar();
 
-        assertThat(calendarRepository.find(calendarId)).isNotNull();*/
+        assertThat(calendarRepository.find(calendarId)).isNotNull();
     }
 
     @Test

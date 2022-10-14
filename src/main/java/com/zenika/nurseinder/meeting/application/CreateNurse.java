@@ -7,6 +7,7 @@ import java.util.UUID;
 import com.zenika.nurseinder.meeting.application.dto.CreateNurseDTO;
 import com.zenika.nurseinder.meeting.application.mapper.NurseMapper;
 import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Calendar;
+import com.zenika.nurseinder.meeting.domain.nurse_aggregate.Nurse;
 import com.zenika.nurseinder.meeting.domain.port.CalendarRepository;
 import com.zenika.nurseinder.meeting.domain.port.NurseRepository;
 import com.zenika.nurseinder.meeting.domain.service.AssignCalendarToNurseService;
@@ -33,14 +34,13 @@ public class CreateNurse {
         this.assignCalendarToNurseService = assignCalendarToNurseService;
     }
 
-    public void create(CreateNurseDTO createNurseDto) {
-        System.out.println("Creation USE CASE");
+    public Nurse create(CreateNurseDTO createNurseDto) {
         var cld = java.util.Calendar.getInstance();
         Date beginDate = new Date();
         cld.add(java.util.Calendar.DAY_OF_MONTH, 2);
         Date endDate = cld.getTime();
 
-        create(createNurseDto,
+        return create(createNurseDto,
                 Calendar.builder()
                         .id(new CalendarId(UUID.randomUUID().toString()))
                         .beginDate(beginDate)
@@ -49,12 +49,14 @@ public class CreateNurse {
                         .build());
     }
 
-    public void create(CreateNurseDTO createNurseDto, Calendar calendar) {
+    public Nurse create(CreateNurseDTO createNurseDto, Calendar calendar) {
         var nurse = nurseMapper.from(createNurseDto);
-        assignCalendarToNurseService.assign(calendar, nurse);//nurse completely created with setCalendar => raise domain event(see inside Nurse)
+        nurse = assignCalendarToNurseService.assign(calendar, nurse);//nurse completely created with setCalendar => raise domain event(see inside Nurse)
 
         calendarRepository.save(calendar);
         nurseRepository.save(nurse);
+
+        return nurse;
 
     }
 }

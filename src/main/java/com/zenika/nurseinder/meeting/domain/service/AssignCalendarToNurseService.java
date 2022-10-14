@@ -21,7 +21,7 @@ public class AssignCalendarToNurseService {
         .build();
   }
 
-  public void assign(Calendar calendar, Nurse nurse) {
+  public Nurse assign(Calendar calendar, Nurse nurse) {
     if (calendar == null || calendar.getId() == null) {
       throw new CalendarException();
     }
@@ -30,5 +30,8 @@ public class AssignCalendarToNurseService {
     }
     CalendarId calendarId = calendar.getId();
     nurse.setCalendar(calendarId);
+
+    return nurse;
+
   }
 }

@@ -13,7 +13,6 @@ import lombok.Builder;
 
 public class Nurse extends AggregateRoot<NurseId> {
 
-    private NurseId id;
     private String name;
     private OrdinalId ordinalId;
     private String email;
@@ -66,5 +65,9 @@ public class Nurse extends AggregateRoot<NurseId> {
         this.calendar = calendarId;
         //this.record(new NurseCreatedEvent(this.id.value(), new Date()));
 
+    }
+
+    public CalendarId getCalendar() {
+        return calendar;
     }
 }
