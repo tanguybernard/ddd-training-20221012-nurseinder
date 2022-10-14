@@ -19,9 +19,7 @@ public class DomainEventPublisher {
             DomainEventPublisher.handlersMap.get(domainEventName).add(subscriber);
         }
 
-
     }
-
 
     public static void clearHandlers() {
         DomainEventPublisher.handlersMap = new HashMap<>();

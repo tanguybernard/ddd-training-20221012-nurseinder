@@ -8,5 +8,6 @@ public class NurseCreatedEventHandler implements EventHandler<NurseCreatedEvent>
     public void handle(NurseCreatedEvent evt) {
         //TODO
         //use repository to persist , make some action...
+
     }
 }

@@ -1,6 +1,7 @@
 package com.zenika.nurseinder;
 
 import com.zenika.nurseinder.meeting.application.event_handlers.NurseCreatedEventHandler;
+import com.zenika.nurseinder.meeting.domain.events.NurseCreatedEvent;
 import com.zenika.nurseinder.shared_kernel.domain_event.DomainEventPublisher;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +16,7 @@ public class NurseInderApplication {
 
 
         //TODO move registration of Handler for domain event
-        //DomainEventPublisher.register(new NurseCreatedEventHandler(), NurseCreatedEventHandler.class.getName());
+        //DomainEventPublisher.register(new NurseCreatedEventHandler(), NurseCreatedEvent.class.getName());
 
     }
 

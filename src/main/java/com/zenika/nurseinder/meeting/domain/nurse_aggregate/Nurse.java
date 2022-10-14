@@ -1,18 +1,15 @@
 package com.zenika.nurseinder.meeting.domain.nurse_aggregate;
 
-import java.util.Date;
 import java.util.List;
 
 import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
-import com.zenika.nurseinder.meeting.domain.events.NurseCreatedEvent;
 import com.zenika.nurseinder.shared_kernel.AggregateRoot;
-import com.zenika.nurseinder.shared_kernel.Entity;
 
 import lombok.Builder;
 
-
 public class Nurse extends AggregateRoot<NurseId> {
 
+    private NurseId id;
     private String name;
     private OrdinalId ordinalId;
     private String email;
