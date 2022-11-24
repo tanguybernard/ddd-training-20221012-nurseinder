@@ -9,9 +9,11 @@ import com.zenika.nurseinder.meeting.application.mapper.NurseMapper;
 import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Calendar;
 import com.zenika.nurseinder.meeting.domain.nurse_aggregate.Nurse;
 import com.zenika.nurseinder.meeting.domain.port.CalendarRepository;
+import com.zenika.nurseinder.meeting.domain.port.EventBus;
 import com.zenika.nurseinder.meeting.domain.port.NurseRepository;
 import com.zenika.nurseinder.meeting.domain.service.AssignCalendarToNurseService;
 import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
+import com.zenika.nurseinder.meeting.infrastructure.bus.RabbitEventBus;
 
 public class CreateNurse {
 
@@ -24,6 +26,7 @@ public class CreateNurse {
     private final AssignCalendarToNurseService assignCalendarToNurseService;
 
     public CreateNurse(
+            EventBus eventBus,
             NurseMapper nurseMapper,
             CalendarRepository calendarRepository,
             NurseRepository nurseRepository,
@@ -53,8 +56,16 @@ public class CreateNurse {
         var nurse = nurseMapper.from(createNurseDto);
         nurse = assignCalendarToNurseService.assign(calendar, nurse);//nurse completely created with setCalendar => raise domain event(see inside Nurse)
 
+
+
+        //TODO Decide Strategy Placement
+        //nurse.pullDomainEvents()
+        //this.eventDispatcherDomain.emit(new DomainEvent)
+
         calendarRepository.save(calendar);
         nurseRepository.save(nurse);
+
+        //this.eventBus.emit(new IntegrationEvent())
 
         return nurse;
 

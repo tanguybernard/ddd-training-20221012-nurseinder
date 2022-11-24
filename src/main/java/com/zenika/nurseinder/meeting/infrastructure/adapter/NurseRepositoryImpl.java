@@ -9,7 +9,7 @@ import com.zenika.nurseinder.meeting.domain.nurse_aggregate.NurseId;
 import com.zenika.nurseinder.meeting.domain.nurse_aggregate.OrdinalId;
 import com.zenika.nurseinder.meeting.domain.port.NurseRepository;
 import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
-import com.zenika.nurseinder.meeting.infrastructure.NurseDAO;
+import com.zenika.nurseinder.meeting.infrastructure.postgresql.NurseDAO;
 import com.zenika.nurseinder.meeting.infrastructure.models.NurseEntity;
 
 public class NurseRepositoryImpl implements NurseRepository {

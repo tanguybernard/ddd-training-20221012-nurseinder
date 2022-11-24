@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
 import com.zenika.nurseinder.meeting.domain.nurse_aggregate.Nurse;
+import com.zenika.nurseinder.meeting.domain.port.EventBus;
+import com.zenika.nurseinder.meeting.infrastructure.bus.RabbitEventBus;
 import org.junit.jupiter.api.Test;
 
 import com.zenika.nurseinder.meeting.application.dto.CreateNurseDTO;
@@ -30,7 +32,9 @@ public class CreateNurseTest {
 
     private AssignCalendarToNurseService assignCalendarToNurseService = new AssignCalendarToNurseService();
 
-    private CreateNurse createNurse = new CreateNurse(nurseMapper, calendarRepository, nurseRepository,
+    private EventBus bus = new RabbitEventBus();
+
+    private CreateNurse createNurse = new CreateNurse(bus, nurseMapper, calendarRepository, nurseRepository,
             assignCalendarToNurseService);
 
     @Test

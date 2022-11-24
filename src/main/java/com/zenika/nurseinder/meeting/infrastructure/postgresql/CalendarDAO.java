@@ -1,4 +1,4 @@
-package com.zenika.nurseinder.meeting.infrastructure;
+package com.zenika.nurseinder.meeting.infrastructure.postgresql;
 
 import com.zenika.nurseinder.meeting.infrastructure.models.CalendarEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 import com.zenika.nurseinder.meeting.domain.calendar_aggregate.Calendar;
 import com.zenika.nurseinder.meeting.domain.port.CalendarRepository;
 import com.zenika.nurseinder.meeting.domain.calendar_aggregate.CalendarId;
-import com.zenika.nurseinder.meeting.infrastructure.CalendarDAO;
+import com.zenika.nurseinder.meeting.infrastructure.postgresql.CalendarDAO;
 import com.zenika.nurseinder.meeting.infrastructure.models.CalendarEntity;
 
 public class CalendarRepositoryImpl implements CalendarRepository {
